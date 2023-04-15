@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+## What is Redux 
+```
+redux is simple pattern and librarY
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## WhY Redux 
+```
+REDUX is used for state management in js appliction
+```
+## Purpose of redux
+```
+the purspose of redux to share data between components.
+```
+## Rule 
+```
+redux is third party library which is follow flux architchture
+```
 
-## Available Scripts
+## What is Flux architechture
+```
+flux architechture is pre-defined set of rules which have to follow to share the data between componets.
+and architechture is
 
-In the project directory, you can run:
+action-----> dispatch-----> store----> view ----> action------>dispatch
+```
+## What is Redux pattern
+```
+redux have a speciel funtion Dispatch() and dispatch will take the action object form components and give this action object to Reducers , after  some operation performing reducer return data and this data will store in store ,
+```
 
-### `npm start`
+## Implementation And How it Works
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+first make a store using
+```
+import {legacy_createStore} from 'redux'
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+const store = legacy_createStore()
 
-### `npm test`
+export default store;
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+and make available to this store for react components
 
-### `npm run build`
+to vaialable store to components you to wrap <app> components inside <Provider> components which import from react-redux
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+and <Provider> take a props store which is your store 
+<Provider store={store}>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## what is Reducer
+```
+reducer is simple js function whch takes two parameter they are 
+1. storedata
+2. action
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+and its return storedata
 
-### `npm run eject`
+* Reducer should resisterd with Redux store
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Reducer can store default data isn the store using ists first parameter
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Note: whenever reducer return data at any point of time , that data stored in redux store
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Action
+```
+action is speciel obejct which contain one mandtory property called type and vaue of this type property should be unique
 
-## Learn More
+action object is used to store data of componnet
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+action object is passed as argument to the dispatch() funtion
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## What is diaspatch
 
-### Code Splitting
+```
+dispatch is predefined function which takes one argument that is action object.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+dispatch is used to call the reducer and pass the action obejct to reducer
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+dispatch functionn can be callled from component directly
+```
